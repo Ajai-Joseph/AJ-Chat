@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "718076056974",
+    "project_id": "aj-chat-ca656",
+    "storage_bucket": "aj-chat-ca656.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:718076056974:android:a24caa40b34309c14640df",
+        "android_client_info": {
+          "package_name": "com.example.aj_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "718076056974-lg1bpnthu4vkeftdmdust3eraefct4nd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8cbdWLu7Xo1knQkH6pC0rRJYL-1LDV4c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "718076056974-lg1bpnthu4vkeftdmdust3eraefct4nd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
