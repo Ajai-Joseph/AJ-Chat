@@ -115,7 +115,7 @@ class LoginScreen extends StatelessWidget {
                                 ),
                               ),
                               style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
+                                backgroundColor: Colors.white,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(40),
                                 ),
@@ -134,7 +134,7 @@ class LoginScreen extends StatelessWidget {
                                 ),
                               ),
                               style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
+                                backgroundColor: Colors.white,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(40),
                                 ),
@@ -148,8 +148,6 @@ class LoginScreen extends StatelessWidget {
                                 builder: (context) => ResetPassword()));
                           },
                           child: Text("Forgot Password?"),
-                          style: TextButton.styleFrom(
-                              primary: Colors.purple.shade900),
                         )
                       ],
                     ),
