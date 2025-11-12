@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:http/http.dart' as http;
 
@@ -18,11 +19,11 @@ Future<void> sendPushNotification(
     );
 
     if (response.statusCode == 200) {
-      print("Notification sent successfully!");
+      log("Notification sent successfully!");
     } else {
-      print("Failed to send notification: ${response.body}");
+      log("Failed to send notification: ${response.body}");
     }
   } catch (e) {
-    print("Error: $e");
+    log("Error: $e");
   }
 }
