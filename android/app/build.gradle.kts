@@ -46,7 +46,7 @@ flutter {
 }
 
 dependencies {
-    implementation "androidx.work:work-runtime-ktx:2.7.1"
-    implementation platform('com.google.firebase:firebase-bom:32.5.0')
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.2.2'
+    implementation("androidx.work:work-runtime-ktx:2.7.1")
+    implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.2.2")
 }
