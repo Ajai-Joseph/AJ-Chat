@@ -1,8 +1,14 @@
+import 'dart:convert';
+import 'dart:developer';
+
+import 'package:aj_chat/call_screen.dart';
 import 'package:aj_chat/home.dart';
+import 'package:aj_chat/send_push_notification.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:http/http.dart' as http;
 
 class ChatScreen extends StatelessWidget {
   String receiverId;
@@ -81,24 +87,35 @@ class ChatScreen extends StatelessWidget {
                   ),
                   Row(
                     children: [
+                      // InkWell(
+                      //   onTap: () {
+                      //     Navigator.of(context).pushReplacement(
+                      //         MaterialPageRoute(
+                      //             builder: (context) => HomeScreen()));
+                      //   },
+                      //   child: CircleAvatar(
+                      //     backgroundColor: Colors.white,
+                      //     child: Icon(
+                      //       Icons.call,
+                      //       color: Colors.purple.shade900,
+                      //     ),
+                      //   ),
+                      // ),
+                      // SizedBox(
+                      //   width: 10,
+                      // ),
                       InkWell(
-                        onTap: () {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) => HomeScreen()));
+                        onTap: () async {
+                          String email = auth.currentUser!.email!;
+                          String username = email.split('@')[0];
+
+                          String token = await fetchAccessToken(
+                              username, 'AJ-Chat-Test-Room');
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => VideoCallScreen(
+                                    token: token,
+                                  )));
                         },
-                        child: CircleAvatar(
-                          backgroundColor: Colors.white,
-                          child: Icon(
-                            Icons.call,
-                            color: Colors.purple.shade900,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      InkWell(
                         child: CircleAvatar(
                           backgroundColor: Colors.white,
                           child: Icon(
@@ -303,5 +320,22 @@ class ChatScreen extends StatelessWidget {
       'Image': senderImage,
       'Id': auth.currentUser!.uid,
     });
+    // String email = auth.currentUser!.email!;
+    // String username = email.split('@')[0];
+    // await sendPushNotification(token, username, message);
+  }
+}
+
+Future<String> fetchAccessToken(String participantName, String roomName) async {
+  final response = await http.get(
+    Uri.parse(
+        'http://192.168.29.73:3000/api/calls/getToken?name=$participantName&room=$roomName'),
+  );
+
+  if (response.statusCode == 200) {
+    log(response.body.toString());
+    return response.body.toString();
+  } else {
+    throw Exception('Failed to load access token');
   }
 }
